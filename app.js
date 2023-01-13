@@ -17,27 +17,27 @@ var enableSucceed = false;
 
 window.addEventListener('load', (event) => {
     alert("Hello! I am an alert box!!");
-  if (ethereum.selectedAddress == null) {
-      ethereumButton.disabled = false;
-      ethereumButton.innerHTML = 'Connect Wallet'
-    } else {
-      ethereumButton.disabled = true
-      const shortAddress = ethereum.selectedAddress;
-      const shortenAddress = shortAddress.slice(0, 5) + '...' + shortAddress.slice(shortAddress.length - 4);
-      ethereumButton.innerHTML = shortenAddress;
-      }
+//   if (ethereum.selectedAddress == null) {
+//       ethereumButton.disabled = false;
+//       ethereumButton.innerHTML = 'Connect Wallet'
+//     } else {
+//       ethereumButton.disabled = true
+//       const shortAddress = ethereum.selectedAddress;
+//       const shortenAddress = shortAddress.slice(0, 5) + '...' + shortAddress.slice(shortAddress.length - 4);
+//       ethereumButton.innerHTML = shortenAddress;
+//       }
 
-    const shortAddress = ethereum.selectedAddress;
-    const checkAllowance = contract.methods.allowance(shortAddress, '0x98958d815DD2317a50200393A075A149e98C11b6').call()
-    .then(USDCAllowed => {
-    if (USDCAllowed>0) {
-      enable.disabled = true
-      enable.innerHTML = 'Successfully enabled'
-      enableSucceed = true
-    }else{
-      enable.disabled = false
-      enable.innerHTML = 'Enable USDC'
-    }});
+//     const shortAddress = ethereum.selectedAddress;
+//     const checkAllowance = contract.methods.allowance(shortAddress, '0x98958d815DD2317a50200393A075A149e98C11b6').call()
+//     .then(USDCAllowed => {
+//     if (USDCAllowed>0) {
+//       enable.disabled = true
+//       enable.innerHTML = 'Successfully enabled'
+//       enableSucceed = true
+//     }else{
+//       enable.disabled = false
+//       enable.innerHTML = 'Enable USDC'
+//     }});
 });
 
 ethereum.on('accountsChanged', function (accounts) {
