@@ -15,7 +15,7 @@ ethereumButton.addEventListener('click', () => {
 
 var enableSucceed = false;
 
-window.onload = function() {
+window.addEventListener('load', (event) => {
   if (ethereum.selectedAddress == null) {
       ethereumButton.disabled = false;
       ethereumButton.innerHTML = 'Connect Wallet'
@@ -37,7 +37,7 @@ window.onload = function() {
       enable.disabled = false
       enable.innerHTML = 'Enable USDC'
     }});
-};
+});
 
 ethereum.on('accountsChanged', function (accounts) {
   if (ethereum.selectedAddress == null) {
