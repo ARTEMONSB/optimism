@@ -39,8 +39,8 @@ function loading() {
     }});
 }
 
-window.addEventListener('load', function (accounts) {
-  loading();
+window.addEventListener('load', (event) => {
+  loading(accounts);
   });
 
 ethereum.on('accountsChanged', function (accounts) {
