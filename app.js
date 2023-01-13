@@ -34,7 +34,7 @@ if (ethereum.isConnected() == true) {
 } else {
       ethereumButton.disabled = false;
       ethereumButton.innerHTML = 'Connect Wallet'
-});
+}});
 
 ethereum.on('accountsChanged', function (accounts) {
   if (ethereum.selectedAddress == null) {
