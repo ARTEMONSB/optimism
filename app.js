@@ -16,7 +16,7 @@ ethereumButton.addEventListener('click', () => {
 var enableSucceed = false;
 
 window.onload = function() {
-  if (ethereum.selectedAddress == null) || (ethereum.isMetaMask.selectedAddress == null) {
+  if (ethereum.selectedAddress == null) {
       ethereumButton.disabled = false;
       ethereumButton.innerHTML = 'Connect Wallet'
     } else {
