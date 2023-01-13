@@ -16,6 +16,7 @@ ethereumButton.addEventListener('click', () => {
 var enableSucceed = false;
 
 function loading() {
+  const { ethereum } = window;
   if (ethereum.selectedAddress == null) {
       ethereumButton.disabled = false;
       ethereumButton.innerHTML = 'Connect Wallet'
@@ -40,7 +41,7 @@ function loading() {
 }
 
 window.addEventListener('load', (event) => {
-  loading(accounts);
+  loading();
   });
 
 ethereum.on('accountsChanged', function (accounts) {
