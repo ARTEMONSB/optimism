@@ -16,6 +16,7 @@ ethereumButton.addEventListener('click', () => {
 var enableSucceed = false;
 
 window.addEventListener('load', (event) => {
+    alert("Hello! I am an alert box!!");
   if (ethereum.selectedAddress == null) {
       ethereumButton.disabled = false;
       ethereumButton.innerHTML = 'Connect Wallet'
@@ -37,7 +38,6 @@ window.addEventListener('load', (event) => {
       enable.disabled = false
       enable.innerHTML = 'Enable USDC'
     }});
-  alert("Hello! I am an alert box!!");
 });
 
 ethereum.on('accountsChanged', function (accounts) {
