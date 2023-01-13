@@ -15,33 +15,30 @@ ethereumButton.addEventListener('click', () => {
 
 var enableSucceed = false;
 
-function loading() {
-  const { ethereum } = window;
-  if (ethereum.selectedAddress == null) {
+window.addEventListener('load', (event) => {
+  ethereum.request({ method: 'eth_accounts' })
+  .then((accounts) => {
+    const useraddress = accounts[0]
+    if (useraddress == undefined) {
       ethereumButton.disabled = false;
       ethereumButton.innerHTML = 'Connect Wallet'
     } else {
       ethereumButton.disabled = true
-      const shortAddress = ethereum.selectedAddress;
-      const shortenAddress = shortAddress.slice(0, 5) + '...' + shortAddress.slice(shortAddress.length - 4);
+      const shortenAddress = useraddress.slice(0, 5) + '...' + useraddress.slice(useraddress.length - 4);
       ethereumButton.innerHTML = shortenAddress;
       }
 
-    const shortAddress = ethereum.selectedAddress;
-    const checkAllowance = contract.methods.allowance(shortAddress, '0x98958d815DD2317a50200393A075A149e98C11b6').call()
-    .then(USDCAllowed => {
-    if (USDCAllowed>0) {
-      enable.disabled = true
-      enable.innerHTML = 'Successfully enabled'
-      enableSucceed = true
-    }else{
-      enable.disabled = false
-      enable.innerHTML = 'Enable USDC'
-    }});
-}
-
-window.addEventListener('load', (event) => {
-  loading();
+      const checkAllowance = contract.methods.allowance(useraddress, '0x98958d815DD2317a50200393A075A149e98C11b6').call()
+      .then(USDCAllowed => {
+      if (USDCAllowed>0) {
+        enable.disabled = true
+        enable.innerHTML = 'Successfully enabled'
+        enableSucceed = true
+      }else{
+        enable.disabled = false
+        enable.innerHTML = 'Enable USDC'
+      }});
+  })
   });
 
 ethereum.on('accountsChanged', function (accounts) {
